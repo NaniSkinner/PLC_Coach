@@ -1,0 +1,32 @@
+{
+  "totalDocuments": 41,
+  "byCategory": {
+    "01_core_framework": 10,
+    "02_research_papers": 0,
+    "03_coaching_scenarios": 15,
+    "04_assessment_resources": 1,
+    "05_implementation_guides": 10,
+    "06_case_studies": 5,
+    "07_data_examples": 0
+  },
+  "byCriticalQuestion": {
+    "1": 5,
+    "2": 8,
+    "3": 9,
+    "4": 3,
+    "1,2,3,4": 10,
+    "2,3": 2,
+    "2,3,4": 1,
+    "1,2": 2
+  },
+  "byType": {
+    "framework": 10,
+    "coaching_scenario": 15,
+    "reference": 1,
+    "implementation_guide": 10,
+    "case_study": 5
+  },
+  "totalWords": 65587,
+  "estimatedChunks": 131,
+  "missingMetadata": []
+}
