@@ -1,51 +1,76 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+import ChatContainer from '@/components/ChatContainer';
+
 export default function Home() {
-  return (
-    <main className="min-h-screen bg-gradient-to-b from-st-gray-50 to-white">
-      <div className="container mx-auto px-4 py-16">
+  const [sessionId, setSessionId] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function initSession() {
+      try {
+        // Check for existing session in localStorage
+        let existingSessionId = localStorage.getItem('plc-session-id');
+
+        if (!existingSessionId) {
+          // Create new session
+          const response = await fetch('/api/sessions', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ userId: 'demo-user' }),
+          });
+
+          if (!response.ok) {
+            throw new Error('Failed to create session');
+          }
+
+          const data = await response.json();
+          existingSessionId = data.sessionId;
+
+          // Store in localStorage
+          localStorage.setItem('plc-session-id', existingSessionId);
+        }
+
+        setSessionId(existingSessionId);
+      } catch (err) {
+        console.error('Session initialization error:', err);
+        setError('Failed to initialize chat session');
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    initSession();
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center h-screen bg-st-gray-50">
         <div className="text-center">
-          <h1 className="text-5xl font-heading font-bold text-st-blue-primary mb-4">
-            AI-Powered PLC Virtual Coach
-          </h1>
-          <p className="text-xl text-st-gray-700 mb-8">
-            Expert guidance for Professional Learning Communities
-          </p>
-          <div className="inline-block bg-st-orange text-white px-6 py-3 rounded-lg">
-            Phase 1 in Progress
-          </div>
-        </div>
-
-        <div className="mt-16 grid md:grid-cols-3 gap-8">
-          <div className="bg-white p-6 rounded-lg shadow">
-            <h3 className="font-heading font-semibold text-st-blue-primary mb-2 text-lg">
-              Framework-Grounded
-            </h3>
-            <p className="text-st-gray-600">
-              Built on Solution Tree's Three Big Ideas and Four Critical Questions
-            </p>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow">
-            <h3 className="font-heading font-semibold text-st-blue-primary mb-2 text-lg">
-              Citation-Backed
-            </h3>
-            <p className="text-st-gray-600">
-              Every response includes specific references to authoritative sources
-            </p>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow">
-            <h3 className="font-heading font-semibold text-st-blue-primary mb-2 text-lg">
-              Inquiry-Based
-            </h3>
-            <p className="text-st-gray-600">
-              Facilitative coaching through powerful questions
-            </p>
-          </div>
-        </div>
-
-        <div className="mt-16 text-center text-sm text-st-gray-500">
-          <p>Phase 1: Foundation Setup In Progress</p>
-          <p className="mt-2">Next.js 14 • TypeScript • Tailwind CSS</p>
+          <div className="animate-spin w-8 h-8 border-4 border-st-blue-primary border-t-transparent rounded-full mx-auto mb-4" />
+          <p className="text-st-gray-700">Initializing coach...</p>
         </div>
       </div>
-    </main>
-  );
+    );
+  }
+
+  if (error || !sessionId) {
+    return (
+      <div className="flex items-center justify-center h-screen bg-st-gray-50">
+        <div className="text-center text-red-600">
+          <p>{error || 'Failed to start session'}</p>
+          <button
+            onClick={() => window.location.reload()}
+            className="mt-4 px-4 py-2 bg-st-blue-primary text-white rounded hover:bg-st-blue-secondary transition-colors"
+          >
+            Retry
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  return <ChatContainer sessionId={sessionId} />;
 }
