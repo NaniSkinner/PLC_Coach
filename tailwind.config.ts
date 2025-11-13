@@ -18,20 +18,24 @@ const config: Config = {
     },
     extend: {
       colors: {
-        // Solution Tree Brand Colors
-        "st-blue-dark": "#004C99",
-        "st-blue-light": "#3385D6",
-        'st-blue-primary': '#0066CC',
-        'st-blue-secondary': '#004C99',
-        'st-orange': '#FF6B35',
-        'st-green': '#28A745',
-        'st-yellow': '#FFC107',
+        // Modern Purple Theme Colors
+        'st-purple': {
+          DEFAULT: '#6C5CE7',
+          dark: '#5B4BD4',
+          light: '#A29BFE',
+        },
         'st-gray': {
-          50: '#F8F9FA',
-          100: '#E9ECEF',
-          300: '#CED4DA',
-          700: '#495057',
-          900: '#1A1A1A',
+          50: '#FAFAFA',
+          100: '#F5F5F5',
+          200: '#EEEEEE',
+          300: '#E0E0E0',
+          400: '#BDBDBD',
+          500: '#9E9E9E',
+          600: '#757575',
+          700: '#616161',
+          800: '#424242',
+          900: '#212121',
+          950: '#1A1A1A',
         },
         // shadcn/ui colors
         border: "hsl(var(--border))",

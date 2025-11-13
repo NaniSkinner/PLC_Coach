@@ -46,37 +46,39 @@ export default function ChatInput({ onSend, disabled }: ChatInputProps) {
   const remaining = maxLength - input.length;
 
   return (
-    <div className="flex flex-col gap-2">
-      <div className="flex gap-2 items-end">
-        <textarea
-          ref={textareaRef}
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={handleKeyDown}
-          disabled={disabled}
-          placeholder="Ask about PLCs, data analysis, interventions..."
-          className="flex-1 resize-none rounded-lg border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-st-blue-primary min-h-[48px] max-h-[200px] disabled:bg-gray-100 disabled:cursor-not-allowed"
-          rows={1}
-          maxLength={maxLength}
-        />
+    <div className="flex flex-col gap-3">
+      <div className="flex gap-3 items-end">
+        <div className="flex-1 relative group">
+          <textarea
+            ref={textareaRef}
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={handleKeyDown}
+            disabled={disabled}
+            placeholder="Message AI PLC Coach..."
+            className="w-full resize-none rounded-2xl border-2 border-st-gray-300/50 bg-white/80 backdrop-blur-sm px-5 py-4 text-[15px] focus:outline-none focus:ring-2 focus:ring-st-purple/50 focus:border-st-purple transition-all duration-300 min-h-[56px] max-h-[200px] disabled:bg-st-gray-100 disabled:cursor-not-allowed shadow-md focus:shadow-xl placeholder:text-st-gray-400"
+            rows={1}
+            maxLength={maxLength}
+          />
+          <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-st-purple/5 to-st-purple-light/5 opacity-0 group-focus-within:opacity-100 transition-opacity duration-300 pointer-events-none -z-10 blur" />
+        </div>
 
         <Button
           onClick={handleSend}
           disabled={disabled || !input.trim()}
-          className="bg-st-blue-primary hover:bg-st-blue-secondary h-12 px-4"
+          className="group bg-gradient-to-r from-st-purple to-st-purple-dark hover:from-st-purple-dark hover:to-st-purple h-[56px] w-[56px] p-0 rounded-2xl disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-110 active:scale-95 disabled:hover:scale-100"
         >
-          <Send className="w-5 h-5" />
+          <Send className="w-5 h-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </Button>
       </div>
 
       {/* Character counter */}
-      <div className="flex justify-between items-center text-xs text-st-gray-700">
-        <p>
-          Press <kbd className="px-1 py-0.5 bg-gray-200 rounded">Enter</kbd> to send,{' '}
-          <kbd className="px-1 py-0.5 bg-gray-200 rounded">Shift + Enter</kbd> for new line
+      <div className="flex justify-between items-center text-xs text-st-gray-500 px-2">
+        <p className="flex items-center gap-1.5">
+          Press <kbd className="px-2 py-1 bg-st-gray-100 border border-st-gray-300 rounded-md text-st-gray-700 font-mono font-semibold shadow-sm">Enter</kbd> to send
         </p>
-        <p className={remaining < 100 ? 'text-st-orange' : ''}>
-          {remaining} characters remaining
+        <p className={`font-semibold ${remaining < 100 ? 'text-red-500' : 'text-st-gray-400'}`}>
+          {remaining} / {maxLength}
         </p>
       </div>
     </div>

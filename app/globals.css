@@ -8,7 +8,9 @@
 @tailwind utilities;
 
 :root {
-  --st-blue-primary: #0066CC;
+  --st-purple-primary: #6C5CE7;
+  --st-purple-dark: #5B4BD4;
+  --st-purple-light: #A29BFE;
   --st-orange: #FF6B35;
   --st-green: #28A745;
   --radius: 0.625rem;
@@ -50,6 +52,24 @@ body {
 }
 
 @theme inline {
+  /* Custom st-purple colors */
+  --color-st-purple: #6C5CE7;
+  --color-st-purple-dark: #5B4BD4;
+  --color-st-purple-light: #A29BFE;
+  
+  /* Custom st-gray colors */
+  --color-st-gray-50: #FAFAFA;
+  --color-st-gray-100: #F5F5F5;
+  --color-st-gray-200: #EEEEEE;
+  --color-st-gray-300: #E0E0E0;
+  --color-st-gray-400: #BDBDBD;
+  --color-st-gray-500: #9E9E9E;
+  --color-st-gray-600: #757575;
+  --color-st-gray-700: #616161;
+  --color-st-gray-800: #424242;
+  --color-st-gray-900: #212121;
+  --color-st-gray-950: #1A1A1A;
+  
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -127,5 +147,102 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  /* Modern Animations */
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-in-from-bottom {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-in-from-right {
+    from {
+      transform: translateX(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-in-from-left {
+    from {
+      transform: translateX(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes scale-in {
+    from {
+      transform: scale(0.95);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .animate-message-in-user {
+    animation: slide-in-from-right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .animate-message-in-assistant {
+    animation: slide-in-from-left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Glassmorphism */
+  .glass {
+    backdrop-filter: blur(12px);
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+
+  /* Smooth scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(108, 92, 231, 0.2);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(108, 92, 231, 0.4);
   }
 }
