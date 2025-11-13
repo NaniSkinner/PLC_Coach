@@ -56,8 +56,8 @@ export class ConversationManager {
         role: row.role as 'user' | 'assistant' | 'system',
         content: row.content,
         timestamp: new Date(row.created_at),
-        citations: row.citations ? JSON.parse(row.citations) : [],
-        metadata: row.metadata ? JSON.parse(row.metadata) : {},
+        citations: row.citations || [],
+        metadata: row.metadata || {},
       }));
 
       return {
@@ -197,8 +197,8 @@ export class ConversationManager {
         role: row.role as 'user' | 'assistant' | 'system',
         content: row.content,
         timestamp: new Date(row.created_at),
-        citations: row.citations ? JSON.parse(row.citations) : [],
-        metadata: row.metadata ? JSON.parse(row.metadata) : {},
+        citations: row.citations || [],
+        metadata: row.metadata || {},
       }));
     } catch (error: any) {
       console.error('Error getting all messages:', error);
