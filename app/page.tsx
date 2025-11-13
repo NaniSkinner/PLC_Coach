@@ -31,7 +31,9 @@ export default function Home() {
           existingSessionId = data.sessionId;
 
           // Store in localStorage
-          localStorage.setItem('plc-session-id', existingSessionId);
+          if (existingSessionId) {
+            localStorage.setItem('plc-session-id', existingSessionId);
+          }
         }
 
         setSessionId(existingSessionId);

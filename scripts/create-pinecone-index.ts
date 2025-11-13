@@ -43,7 +43,7 @@ async function createPineconeIndex() {
   try {
     // Initialize Pinecone client
     const pinecone = new Pinecone({
-      apiKey: PINECONE_API_KEY,
+      apiKey: PINECONE_API_KEY!,
     });
 
     console.log(`📝 Index Configuration:`);
@@ -69,7 +69,6 @@ async function createPineconeIndex() {
       console.log(`   Status: ${indexDescription.status?.state || 'unknown'}`);
       console.log(`   Dimension: ${indexDescription.dimension}`);
       console.log(`   Metric: ${indexDescription.metric}`);
-      console.log(`   Total Vector Count: ${indexDescription.status?.totalVectorCount || 0}\n`);
 
       return;
     }

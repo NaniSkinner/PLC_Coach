@@ -75,13 +75,11 @@ function formatChunksForPrompt(chunks: RetrievedChunk[]): string {
   return chunks
     .map((chunk, index) => {
       const cqDisplay = chunk.metadata.criticalQuestion || 'General';
-      const section = chunk.metadata.section || 'N/A';
       const author = chunk.metadata.author || 'Unknown';
 
       return `[Context ${index + 1}]
 Source: ${chunk.metadata.sourceDocument}
 Author: ${author}
-Section: ${section}
 Critical Question: ${cqDisplay}
 Category: ${chunk.metadata.category}
 Relevance Score: ${chunk.adjustedScore.toFixed(3)}

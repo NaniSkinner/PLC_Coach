@@ -63,8 +63,8 @@ export function extractCitations(
           id: crypto.randomUUID(),
           sourceDocument: matchingChunk.metadata.sourceDocument,
           author: matchingChunk.metadata.author || 'Unknown',
-          chapterOrSection: matchingChunk.metadata.section,
-          pageNumber: matchingChunk.metadata.pageNumber,
+          chapterOrSection: undefined,
+          pageNumber: undefined,
           relevanceScore: matchingChunk.adjustedScore,
         });
         seenSources.add(matchingChunk.id);
@@ -83,8 +83,8 @@ export function extractCitations(
           id: crypto.randomUUID(),
           sourceDocument: chunk.metadata.sourceDocument,
           author: chunk.metadata.author || 'Unknown',
-          chapterOrSection: chunk.metadata.section,
-          pageNumber: chunk.metadata.pageNumber,
+          chapterOrSection: undefined,
+          pageNumber: undefined,
           relevanceScore: chunk.adjustedScore,
         });
         seenSources.add(chunk.id);

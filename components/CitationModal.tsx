@@ -64,20 +64,6 @@ export default function CitationModal({
             </dl>
           </div>
 
-          {/* URL/Link if available */}
-          {citation.url && (
-            <div>
-              <a
-                href={citation.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-st-blue-primary hover:underline text-sm"
-              >
-                View full resource →
-              </a>
-            </div>
-          )}
-
           {/* Additional Info */}
           <div className="text-xs text-st-gray-700">
             <p>

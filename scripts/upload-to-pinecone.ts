@@ -142,7 +142,7 @@ async function uploadToPinecone() {
   // Initialize Pinecone client
   console.log('🔌 Connecting to Pinecone...');
   const pinecone = new Pinecone({
-    apiKey: PINECONE_API_KEY,
+    apiKey: PINECONE_API_KEY!,
   });
 
   const index = pinecone.index(INDEX_NAME);
