@@ -11,15 +11,15 @@ export default function TypingIndicator() {
               <span className="text-sm text-st-gray-700 font-medium">Coach is thinking</span>
               <div className="flex space-x-1.5">
                 <div
-                  className="w-2.5 h-2.5 bg-gradient-to-r from-st-purple to-st-purple-light rounded-full animate-bounce shadow-sm"
+                  className="w-2.5 h-2.5 bg-linear-to-r from-st-purple to-st-purple-light rounded-full animate-bounce shadow-sm"
                   style={{ animationDelay: '0ms' }}
                 />
                 <div
-                  className="w-2.5 h-2.5 bg-gradient-to-r from-st-purple to-st-purple-light rounded-full animate-bounce shadow-sm"
+                  className="w-2.5 h-2.5 bg-linear-to-r from-st-purple to-st-purple-light rounded-full animate-bounce shadow-sm"
                   style={{ animationDelay: '150ms' }}
                 />
                 <div
-                  className="w-2.5 h-2.5 bg-gradient-to-r from-st-purple to-st-purple-light rounded-full animate-bounce shadow-sm"
+                  className="w-2.5 h-2.5 bg-linear-to-r from-st-purple to-st-purple-light rounded-full animate-bounce shadow-sm"
                   style={{ animationDelay: '300ms' }}
                 />
               </div>

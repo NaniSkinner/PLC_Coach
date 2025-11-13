@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { useState, useRef, useEffect, KeyboardEvent } from 'react';
-import { Button } from '@/components/ui/button';
-import { Send } from 'lucide-react';
+import { useState, useRef, useEffect, KeyboardEvent } from "react";
+import { Button } from "@/components/ui/button";
+import { Send } from "lucide-react";
 
 interface ChatInputProps {
   onSend: (message: string) => void;
@@ -10,16 +10,17 @@ interface ChatInputProps {
 }
 
 export default function ChatInput({ onSend, disabled }: ChatInputProps) {
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   // Auto-resize textarea
   useEffect(() => {
     if (textareaRef.current) {
       // Reset height to recalculate
-      textareaRef.current.style.height = 'auto';
+      textareaRef.current.style.height = "auto";
       // Set to scrollHeight
-      textareaRef.current.style.height = textareaRef.current.scrollHeight + 'px';
+      textareaRef.current.style.height =
+        textareaRef.current.scrollHeight + "px";
     }
   }, [input]);
 
@@ -27,16 +28,16 @@ export default function ChatInput({ onSend, disabled }: ChatInputProps) {
     const message = input.trim();
     if (message && !disabled) {
       onSend(message);
-      setInput('');
+      setInput("");
       // Reset textarea height
       if (textareaRef.current) {
-        textareaRef.current.style.height = 'auto';
+        textareaRef.current.style.height = "auto";
       }
     }
   }
 
   function handleKeyDown(e: KeyboardEvent<HTMLTextAreaElement>) {
-    if (e.key === 'Enter' && !e.shiftKey) {
+    if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       handleSend();
     }
@@ -60,13 +61,13 @@ export default function ChatInput({ onSend, disabled }: ChatInputProps) {
             rows={1}
             maxLength={maxLength}
           />
-          <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-st-purple/5 to-st-purple-light/5 opacity-0 group-focus-within:opacity-100 transition-opacity duration-300 pointer-events-none -z-10 blur" />
+          <div className="absolute inset-0 rounded-2xl bg-linear-to-r from-st-purple/5 to-st-purple-light/5 opacity-0 group-focus-within:opacity-100 transition-opacity duration-300 pointer-events-none -z-10 blur" />
         </div>
 
         <Button
           onClick={handleSend}
           disabled={disabled || !input.trim()}
-          className="group bg-gradient-to-r from-st-purple to-st-purple-dark hover:from-st-purple-dark hover:to-st-purple h-[56px] w-[56px] p-0 rounded-2xl disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-110 active:scale-95 disabled:hover:scale-100"
+          className="group bg-linear-to-r from-st-purple to-st-purple-dark hover:from-st-purple-dark hover:to-st-purple h-[56px] w-[56px] p-0 rounded-2xl disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-110 active:scale-95 disabled:hover:scale-100"
         >
           <Send className="w-5 h-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </Button>
@@ -74,10 +75,11 @@ export default function ChatInput({ onSend, disabled }: ChatInputProps) {
 
       {/* Character counter */}
       <div className="flex justify-between items-center text-xs text-st-gray-500 px-2">
-        <p className="flex items-center gap-1.5">
-          Press <kbd className="px-2 py-1 bg-st-gray-100 border border-st-gray-300 rounded-md text-st-gray-700 font-mono font-semibold shadow-sm">Enter</kbd> to send
-        </p>
-        <p className={`font-semibold ${remaining < 100 ? 'text-red-500' : 'text-st-gray-400'}`}>
+        <p
+          className={`font-semibold ${
+            remaining < 100 ? "text-red-500" : "text-st-gray-400"
+          }`}
+        >
           {remaining} / {maxLength}
         </p>
       </div>

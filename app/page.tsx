@@ -79,7 +79,7 @@ export default function Home() {
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center h-screen bg-gradient-to-br from-st-purple/5 via-white to-st-purple/5">
+      <div className="flex items-center justify-center h-screen bg-linear-to-br from-st-purple/5 via-white to-st-purple/5">
         <div className="text-center">
           <div className="animate-spin w-12 h-12 border-4 border-st-purple/20 border-t-st-purple rounded-full mx-auto mb-4" />
           <p className="text-st-gray-700 font-medium">Initializing coach...</p>
@@ -90,7 +90,7 @@ export default function Home() {
 
   if (error || !sessionId) {
     return (
-      <div className="flex items-center justify-center h-screen bg-gradient-to-br from-st-purple/5 via-white to-st-purple/5">
+      <div className="flex items-center justify-center h-screen bg-linear-to-br from-st-purple/5 via-white to-st-purple/5">
         <div className="text-center bg-white p-8 rounded-2xl shadow-xl border border-red-200">
           <p className="text-red-600 mb-4">{error || 'Failed to start session'}</p>
           <button
@@ -105,13 +105,12 @@ export default function Home() {
   }
 
   return (
-    <div className="flex h-screen overflow-hidden bg-gradient-to-br from-st-purple/5 via-white to-st-purple/5">
-      <ConversationSidebar
-        currentSessionId={sessionId}
-        onSelectSession={handleSelectSession}
-        onNewConversation={handleNewConversation}
-      />
+    <ConversationSidebar
+      currentSessionId={sessionId}
+      onSelectSession={handleSelectSession}
+      onNewConversation={handleNewConversation}
+    >
       <ChatContainer sessionId={sessionId} key={sessionId} />
-    </div>
+    </ConversationSidebar>
   );
 }

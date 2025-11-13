@@ -119,7 +119,7 @@ export default function ChatContainer({ sessionId }: ChatContainerProps) {
             <div className="flex flex-col items-center justify-center min-h-[60vh] text-center animate-in fade-in zoom-in-95 duration-500">
               <div className="relative mb-8">
                 <div className="absolute inset-0 bg-st-purple/20 rounded-full blur-2xl animate-pulse" />
-                <div className="relative w-20 h-20 bg-gradient-to-br from-st-purple to-st-purple-light rounded-2xl flex items-center justify-center shadow-xl transform hover:scale-110 transition-transform duration-300">
+                <div className="relative w-20 h-20 bg-linear-to-br from-st-purple to-st-purple-light rounded-2xl flex items-center justify-center shadow-xl transform hover:scale-110 transition-transform duration-300">
                   <MessageSquare
                     className="w-10 h-10 text-white"
                     strokeWidth={2.5}

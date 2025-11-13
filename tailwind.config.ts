@@ -18,11 +18,27 @@ const config: Config = {
     },
     extend: {
       colors: {
-        // Modern Purple Theme Colors
+        // Solution Tree Brand Colors
+        'st-blue': {
+          DEFAULT: '#1E4D7B',
+          dark: '#153A5C',
+          light: '#2B6BA8',
+        },
+        'st-teal': {
+          DEFAULT: '#4A9B9B',
+          dark: '#357373',
+          light: '#6BC1C1',
+        },
+        'st-orange': {
+          DEFAULT: '#E67E47',
+          dark: '#C9652E',
+          light: '#F59B6C',
+        },
+        // Legacy purple colors (keeping for compatibility)
         'st-purple': {
-          DEFAULT: '#6C5CE7',
-          dark: '#5B4BD4',
-          light: '#A29BFE',
+          DEFAULT: '#1E4D7B',
+          dark: '#153A5C',
+          light: '#2B6BA8',
         },
         'st-gray': {
           50: '#FAFAFA',

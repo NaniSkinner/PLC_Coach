@@ -874,7 +874,7 @@
   ```typescript
   export default function Home() {
     return (
-      <main className="min-h-screen bg-gradient-to-b from-st-gray-50 to-white">
+      <main className="min-h-screen bg-linear-to-b from-st-gray-50 to-white">
         <div className="container mx-auto px-4 py-16">
           <div className="text-center">
             <h1 className="text-5xl font-heading font-bold text-st-blue-primary mb-4">
