@@ -1,7 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { MessageSquare, Plus, Trash2, PanelLeftClose } from 'lucide-react';
+import { MessageSquare, Plus, Trash2, PanelLeftClose, PanelLeftOpen } from 'lucide-react';
+import { ThemeToggle } from '@/components/theme-toggle';
+import Image from 'next/image';
 import {
   Sidebar,
   SidebarContent,
@@ -43,28 +45,51 @@ function SidebarHeaderContent({
 
   return (
     <SidebarHeader className="border-b border-st-gray-200/50 p-4">
-      <div className="flex items-start justify-between mb-4">
-        <div className="flex-1">
-          <h1 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-st-blue to-st-teal group-data-[collapsible=icon]:hidden">
-            AI PLC Coach
+      <div className="flex items-center gap-3 mb-4 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:mb-0">
+        {/* Logo - clickable to expand when collapsed */}
+        <button
+          onClick={state === "collapsed" ? toggleSidebar : undefined}
+          className={`shrink-0 ${state === "collapsed" ? "cursor-pointer hover:opacity-80 transition-opacity" : ""}`}
+          title={state === "collapsed" ? "Expand sidebar" : undefined}
+        >
+          <Image
+            src="/assets/Solutions Tree Logo 2025.png"
+            alt="Solution Tree Logo"
+            width={40}
+            height={40}
+          />
+        </button>
+        <div className="flex-1 group-data-[collapsible=icon]:hidden">
+          <h1 className="text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-st-blue to-st-teal">
+            AI Coach
           </h1>
-          <p className="text-xs text-st-gray-600 font-medium mt-1 group-data-[collapsible=icon]:hidden">
-            Professional Learning Communities guidance
+          <p className="text-xs text-st-gray-600 font-medium">
+            Solution Tree Coaches
           </p>
         </div>
         <Button
           onClick={toggleSidebar}
           variant="ghost"
           size="icon"
-          className="h-8 w-8 text-st-gray-600 hover:text-st-blue hover:bg-st-blue/10"
-          title={state === "collapsed" ? "Expand sidebar (Cmd+B)" : "Collapse sidebar (Cmd+B)"}
+          className="h-8 w-8 text-st-gray-600 hover:text-st-blue hover:bg-st-blue/10 group-data-[collapsible=icon]:hidden"
+          title="Collapse sidebar (Cmd+B)"
         >
           <PanelLeftClose className="h-5 w-5" />
         </Button>
       </div>
+      {/* Expand button when collapsed */}
+      <Button
+        onClick={toggleSidebar}
+        variant="ghost"
+        size="icon"
+        className="hidden group-data-[collapsible=icon]:flex h-8 w-8 mx-auto text-st-gray-600 hover:text-st-teal hover:bg-st-teal/10"
+        title="Expand sidebar (Cmd+B)"
+      >
+        <PanelLeftOpen className="h-5 w-5" />
+      </Button>
       <Button
         onClick={onNewConversation}
-        className="w-full bg-gradient-to-r from-st-orange to-st-orange-dark hover:from-st-orange-dark hover:to-st-orange text-white shadow-lg hover:shadow-xl transition-all group-data-[collapsible=icon]:hidden"
+        className="w-full bg-gradient-to-r from-st-teal to-st-teal-dark hover:from-st-teal-dark hover:to-st-teal text-white shadow-lg hover:shadow-xl transition-all group-data-[collapsible=icon]:hidden"
       >
         <Plus className="w-5 h-5 mr-2" />
         New Chat
@@ -189,9 +214,12 @@ export default function ConversationSidebar({
           </SidebarContent>
 
           <SidebarFooter className="border-t border-st-gray-200/50 p-4">
-            <p className="text-xs text-st-gray-500 text-center font-semibold tracking-wide group-data-[collapsible=icon]:hidden">
-              AI PLC Coach
-            </p>
+            <div className="flex items-center justify-between group-data-[collapsible=icon]:justify-center">
+              <p className="text-xs text-st-gray-500 font-semibold tracking-wide group-data-[collapsible=icon]:hidden">
+                AI Coach
+              </p>
+              <ThemeToggle />
+            </div>
           </SidebarFooter>
         </Sidebar>
 

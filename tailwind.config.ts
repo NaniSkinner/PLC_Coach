@@ -18,40 +18,40 @@ const config: Config = {
     },
     extend: {
       colors: {
-        // Solution Tree Brand Colors
+        // AI Coach Brand Colors - using CSS variables for dark mode support
         'st-blue': {
-          DEFAULT: '#1E4D7B',
-          dark: '#153A5C',
-          light: '#2B6BA8',
+          DEFAULT: 'var(--st-blue-primary)',
+          dark: 'var(--st-blue-dark)',
+          light: 'var(--st-blue-light)',
         },
         'st-teal': {
-          DEFAULT: '#4A9B9B',
-          dark: '#357373',
-          light: '#6BC1C1',
+          DEFAULT: 'var(--st-teal)',
+          dark: 'var(--st-teal-dark)',
+          light: 'var(--st-teal-light)',
         },
-        'st-orange': {
-          DEFAULT: '#E67E47',
-          dark: '#C9652E',
-          light: '#F59B6C',
+        'st-green': {
+          DEFAULT: 'var(--st-green)',
+          dark: 'var(--st-green-dark)',
+          light: 'var(--st-green-light)',
         },
-        // Legacy purple colors (keeping for compatibility)
+        // Legacy purple colors mapped to primary blue for compatibility
         'st-purple': {
-          DEFAULT: '#1E4D7B',
-          dark: '#153A5C',
-          light: '#2B6BA8',
+          DEFAULT: 'var(--st-purple-primary)',
+          dark: 'var(--st-purple-dark)',
+          light: 'var(--st-purple-light)',
         },
         'st-gray': {
-          50: '#FAFAFA',
-          100: '#F5F5F5',
-          200: '#EEEEEE',
-          300: '#E0E0E0',
-          400: '#BDBDBD',
-          500: '#9E9E9E',
-          600: '#757575',
-          700: '#616161',
-          800: '#424242',
-          900: '#212121',
-          950: '#1A1A1A',
+          50: 'var(--st-gray-50)',
+          100: 'var(--st-gray-100)',
+          200: 'var(--st-gray-200)',
+          300: 'var(--st-gray-300)',
+          400: 'var(--st-gray-400)',
+          500: 'var(--st-gray-500)',
+          600: 'var(--st-gray-600)',
+          700: 'var(--st-gray-700)',
+          800: 'var(--st-gray-800)',
+          900: 'var(--st-gray-900)',
+          950: 'var(--st-gray-950)',
         },
         // shadcn/ui colors
         border: "hsl(var(--border))",
@@ -109,7 +109,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        heading: ['Poppins', 'sans-serif'],
+        heading: ['Lato', 'sans-serif'],
       },
     },
   },

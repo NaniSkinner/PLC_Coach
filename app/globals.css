@@ -4,20 +4,35 @@
 
 @layer base {
   :root {
-    --st-blue-primary: #1E4D7B;
-    --st-blue-dark: #153A5C;
-    --st-blue-light: #2B6BA8;
-    --st-teal: #4A9B9B;
-    --st-teal-dark: #357373;
-    --st-teal-light: #6BC1C1;
-    --st-orange: #E67E47;
-    --st-orange-dark: #C9652E;
-    --st-orange-light: #F59B6C;
-    /* Legacy purple colors mapped to blue */
-    --st-purple-primary: #1E4D7B;
-    --st-purple-dark: #153A5C;
-    --st-purple-light: #2B6BA8;
-    --st-green: #28a745;
+    /* AI Coach Brand Colors */
+    --st-blue-primary: #2E4A9E;
+    --st-blue-dark: #1F2C52;
+    --st-blue-light: #4A6BC8;
+    --st-teal: #2CC7B5;
+    --st-teal-dark: #22A396;
+    --st-teal-light: #5DD9CA;
+    /* Coach accent - soft green for growth */
+    --st-green: #5BC87A;
+    --st-green-dark: #45A862;
+    --st-green-light: #7DD898;
+    /* Legacy purple colors mapped to new primary blue */
+    --st-purple-primary: #2E4A9E;
+    --st-purple-dark: #1F2C52;
+    --st-purple-light: #4A6BC8;
+    /* Light background surface */
+    --st-background-light: #F6F7FB;
+    /* Gray scale for light mode */
+    --st-gray-50: #FAFAFA;
+    --st-gray-100: #F5F5F5;
+    --st-gray-200: #EEEEEE;
+    --st-gray-300: #E0E0E0;
+    --st-gray-400: #BDBDBD;
+    --st-gray-500: #9E9E9E;
+    --st-gray-600: #757575;
+    --st-gray-700: #616161;
+    --st-gray-800: #424242;
+    --st-gray-900: #212121;
+    --st-gray-950: #1A1A1A;
     --radius: 0.625rem;
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
@@ -86,6 +101,36 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* AI Coach Brand colors - lighter for dark mode */
+    --st-blue-primary: #5A7BC8;
+    --st-blue-dark: #4A6BB8;
+    --st-blue-light: #7A9BE8;
+    --st-teal: #5DD9CA;
+    --st-teal-dark: #4DC9BA;
+    --st-teal-light: #7DE9DA;
+    /* Coach accent - soft green for growth */
+    --st-green: #7DD898;
+    --st-green-dark: #6DC888;
+    --st-green-light: #9DE8B8;
+    /* Legacy purple colors mapped to new primary blue */
+    --st-purple-primary: #5A7BC8;
+    --st-purple-dark: #4A6BB8;
+    --st-purple-light: #7A9BE8;
+    /* Light background surface for dark mode */
+    --st-background-light: #1A1D24;
+    /* Gray scale inverted for dark mode */
+    --st-gray-50: #1A1A1A;
+    --st-gray-100: #212121;
+    --st-gray-200: #424242;
+    --st-gray-300: #616161;
+    --st-gray-400: #757575;
+    --st-gray-500: #9E9E9E;
+    --st-gray-600: #BDBDBD;
+    --st-gray-700: #E0E0E0;
+    --st-gray-800: #EEEEEE;
+    --st-gray-900: #F5F5F5;
+    --st-gray-950: #FAFAFA;
   }
 }
 
@@ -154,6 +199,101 @@
     }
   }
 
+  /* AI Coach Micro-interactions */
+  @keyframes typing-bounce {
+    0%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-6px);
+    }
+  }
+
+  @keyframes ai-shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  @keyframes float-in {
+    from {
+      transform: translateY(10px) scale(0.95);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-up {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes checkmark-pop {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes pulse-soft {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.6;
+    }
+  }
+
+  .animate-typing-bounce {
+    animation: typing-bounce 1.4s ease-in-out infinite;
+  }
+
+  .animate-ai-shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(44, 199, 181, 0.3) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: ai-shimmer 2s ease-in-out infinite;
+  }
+
+  .animate-float-in {
+    animation: float-in 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .animate-checkmark {
+    animation: checkmark-pop 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .animate-pulse-soft {
+    animation: pulse-soft 2s ease-in-out infinite;
+  }
+
   .animate-message-in-user {
     animation: slide-in-from-right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
@@ -176,6 +316,10 @@
     background-color: rgba(255, 255, 255, 0.8);
   }
 
+  .dark .glass {
+    background-color: rgba(15, 15, 20, 0.8);
+  }
+
   /* Smooth scrollbar */
   ::-webkit-scrollbar {
     width: 8px;
@@ -187,11 +331,19 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: rgba(30, 77, 123, 0.2);
+    background: rgba(46, 74, 158, 0.2);
     border-radius: 4px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(30, 77, 123, 0.4);
+    background: rgba(46, 74, 158, 0.4);
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    background: rgba(90, 123, 200, 0.3);
+  }
+
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background: rgba(90, 123, 200, 0.5);
   }
 }

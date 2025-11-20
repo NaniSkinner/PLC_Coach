@@ -104,6 +104,9 @@ export default function ChatContainer({ sessionId }: ChatContainerProps) {
 
   return (
     <div className="flex flex-col h-screen flex-1 relative">
+      {/* Coaching Ribbon - Signature Element */}
+      <div className="h-1 bg-gradient-to-r from-st-blue to-st-teal shrink-0" />
+
       {/* Messages Area with proper spacing */}
       <div className="flex-1 overflow-y-auto px-4 py-8 scroll-smooth">
         {error && (
@@ -118,8 +121,8 @@ export default function ChatContainer({ sessionId }: ChatContainerProps) {
           {messages.length === 0 ? (
             <div className="flex flex-col items-center justify-center min-h-[60vh] text-center animate-in fade-in zoom-in-95 duration-500">
               <div className="relative mb-8">
-                <div className="absolute inset-0 bg-st-purple/20 rounded-full blur-2xl animate-pulse" />
-                <div className="relative w-20 h-20 bg-linear-to-br from-st-purple to-st-purple-light rounded-2xl flex items-center justify-center shadow-xl transform hover:scale-110 transition-transform duration-300">
+                <div className="absolute inset-0 bg-st-teal/20 rounded-full blur-2xl animate-pulse-soft" />
+                <div className="relative w-20 h-20 bg-gradient-to-br from-st-blue to-st-teal rounded-2xl flex items-center justify-center shadow-xl transform hover:scale-110 transition-transform duration-300">
                   <MessageSquare
                     className="w-10 h-10 text-white"
                     strokeWidth={2.5}
@@ -146,7 +149,7 @@ export default function ChatContainer({ sessionId }: ChatContainerProps) {
       </div>
 
       {/* Floating Input Area with elevation */}
-      <div className="sticky bottom-0 z-40 backdrop-blur-xl bg-white/80 border-t border-st-gray-200/50 px-4 py-6 shadow-2xl">
+      <div className="sticky bottom-0 z-40 backdrop-blur-xl bg-background/80 border-t border-st-gray-200/50 px-4 py-6 shadow-2xl">
         <div className="max-w-3xl mx-auto">
           <ChatInput onSend={handleSendMessage} disabled={isLoading} />
         </div>

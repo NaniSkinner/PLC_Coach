@@ -1,21 +1,22 @@
 import type { Metadata } from "next";
-import { Inter, Poppins } from "next/font/google";
+import { Inter, Lato } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: '--font-inter'
 });
 
-const poppins = Poppins({
-  weight: ['400', '600', '700'],
+const lato = Lato({
+  weight: ['400', '700'],
   subsets: ['latin'],
-  variable: '--font-poppins'
+  variable: '--font-lato'
 });
 
 export const metadata: Metadata = {
-  title: "AI PLC Virtual Coach",
-  description: "Expert guidance for Professional Learning Communities",
+  title: "AI Coach",
+  description: "A modern, structured AI coaching experience designed to elevate PLC leaders with clarity, insight, and actionable next steps.",
 };
 
 export default function RootLayout({
@@ -24,8 +25,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
-      <body>{children}</body>
+    <html lang="en" className={`${inter.variable} ${lato.variable}`} suppressHydrationWarning>
+      <body>
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
