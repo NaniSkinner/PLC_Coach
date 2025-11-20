@@ -57,7 +57,7 @@ export default function ChatInput({ onSend, disabled }: ChatInputProps) {
             onKeyDown={handleKeyDown}
             disabled={disabled}
             placeholder="Message AI PLC Coach..."
-            className="w-full resize-none rounded-2xl border-2 border-st-gray-300/50 bg-white/80 backdrop-blur-sm px-5 py-4 text-[15px] focus:outline-none focus:ring-2 focus:ring-st-purple/50 focus:border-st-purple transition-all duration-300 min-h-[56px] max-h-[200px] disabled:bg-st-gray-100 disabled:cursor-not-allowed shadow-md focus:shadow-xl placeholder:text-st-gray-400"
+            className="w-full resize-none rounded-2xl border-2 border-st-gray-300/50 bg-white/80 backdrop-blur-sm px-5 py-4 text-[15px] text-st-gray-900 focus:outline-none focus:ring-2 focus:ring-st-purple/50 focus:border-st-purple transition-all duration-300 min-h-[56px] max-h-[200px] disabled:bg-st-gray-100 disabled:cursor-not-allowed shadow-md focus:shadow-xl placeholder:text-st-gray-400"
             rows={1}
             maxLength={maxLength}
           />

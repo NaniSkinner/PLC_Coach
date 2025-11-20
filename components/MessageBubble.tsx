@@ -15,8 +15,8 @@ export default function MessageBubble({ message }: MessageBubbleProps) {
       <div className="flex justify-end mb-8 animate-message-in-user">
         <div className="max-w-[85%] sm:max-w-[75%]">
           <div className="relative group">
-            <div className="absolute -inset-1 bg-linear-to-r from-st-purple to-st-purple-light rounded-3xl opacity-20 group-hover:opacity-30 blur transition duration-300" />
-            <div className="relative bg-linear-to-r from-st-purple to-st-purple-dark text-white rounded-3xl rounded-br-md px-6 py-4 shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]">
+            <div className="absolute -inset-1 bg-gradient-to-r from-st-purple to-st-purple-light rounded-3xl opacity-20 group-hover:opacity-30 blur transition duration-300" />
+            <div className="relative bg-gradient-to-r from-st-purple to-st-purple-dark text-white rounded-3xl rounded-br-md px-6 py-4 shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]">
               <p className="text-[15px] leading-relaxed whitespace-pre-wrap font-medium">
                 {message.content}
               </p>
